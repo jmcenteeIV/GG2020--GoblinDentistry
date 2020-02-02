@@ -10,6 +10,11 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void ReplayGame()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
     public void QuitGame ()
     {
         Debug.Log("The user has quit the game!");
