@@ -6,6 +6,7 @@ public class ScoreKeeperScript : MonoBehaviour
 {
     private int misclicks = 0;
     private int correctClicks = 0;
+    private int completedGoblins = 0;
 
     void Awake()
     {
@@ -30,5 +31,15 @@ public class ScoreKeeperScript : MonoBehaviour
     public int getCorrectClicks()
     {
         return correctClicks;
+    }
+
+    public void updateCompletedGoblins()
+    {
+        completedGoblins = completedGoblins + 1;
+    }
+
+    public int getCompletedGoblins()
+    {
+        return completedGoblins;
     }
 }
