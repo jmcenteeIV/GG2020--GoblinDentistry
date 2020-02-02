@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreKeeperScript : MonoBehaviour
 {
@@ -12,6 +13,16 @@ public class ScoreKeeperScript : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Update()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            misclicks = 0;
+            correctClicks = 0;
+            completedGoblins = 0;
+        }
     }
 
     public void updateMisclicks()
