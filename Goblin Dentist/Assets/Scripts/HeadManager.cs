@@ -5,14 +5,13 @@ using UnityEngine;
 public class HeadManager : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    Head currentHead;
+    GameObject currentHead;
     public GameObject[] possibleHeads;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("here");
-        Instantiate(possibleHeads[Random.Range(0, possibleHeads.Length)], this.transform);
+        Init();
         //currentHead.Init(50);
         //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         //spriteRenderer.sprite = Resources.Load<Sprite>(currentHead.SpriteLocation);
@@ -22,6 +21,17 @@ public class HeadManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Init()
+    {
+        if (currentHead != null) {
+            Destroy(currentHead);
+            currentHead = null;
+            Debug.Log("Deleted old Head");
+        }
+            Debug.Log("New Head Generated");
+            currentHead = Instantiate(possibleHeads[Random.Range(0, possibleHeads.Length)], this.transform);
+
     }
 
 }

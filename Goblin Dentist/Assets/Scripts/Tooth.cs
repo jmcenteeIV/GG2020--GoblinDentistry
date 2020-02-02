@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tooth : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class Tooth : MonoBehaviour
         Missing
     }
     
-    enum ToothAttribute
+    public enum ToothAttribute
     {
         Healthy,
         Rotten,
@@ -35,7 +37,7 @@ public class Tooth : MonoBehaviour
         (ToothType.Healthy, ToothAttribute.Healthy, "Teeth/Normal/{0}"),
         (ToothType.Wooden, ToothAttribute.Rotten, "Teeth/Wood/{0}"),
         (ToothType.Gold, ToothAttribute.Rotten, "Teeth/Gold/{0}"),
-        (ToothType.Metal, ToothAttribute.Rotten, "Teeth/Unique/{0}/gobtooth_nazgul"),
+        (ToothType.Metal, ToothAttribute.Rotten, "Teeth/Unique/{0}"),
         (ToothType.Missing, ToothAttribute.Rotten, "nothing"),
         (ToothType.Missing, ToothAttribute.Missing, "nothing")
     };
@@ -80,17 +82,31 @@ public class Tooth : MonoBehaviour
         {
             if (toothSelection.type == ToolManager.Instance.getrepairType())
             {
-                if (selectedAttribute == ToothAttribute.Rotten)
-                    SetToothState(ToothAttribute.Healthy);
-                else
+                switch (selectedAttribute)
                 {
-                    SetToothState(ToothAttribute.Missing);
-
-                    // Enable to disable object.
-                    //CapsuleCollider2D capsuleCollider = GetComponent<CapsuleCollider2D>();
-                    //capsuleCollider.enabled = false;
+                    case ToothAttribute.Rotten:
+                    case ToothAttribute.Missing:
+                        SetToothState(ToothAttribute.Healthy);
+                        break;
+                    default:
+                        SetToothState(ToothAttribute.Missing);
+                        break;
                 }
                 AudioManager.Instance.toothRepair();
+            }
+            else
+            {
+                if(GameObject.Find("ScoreKeeper") != null && GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>() != null)
+                {
+                    if (GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().getMisclicks() >= 10)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    }
+                    else
+                    {
+                        GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().updateMisclicks();
+                    }
+                }
             }
         }
     }
@@ -110,5 +126,10 @@ public class Tooth : MonoBehaviour
         toothSprite.sprite = spriteList[UnityEngine.Random.Range(0,spriteList.Length)] as Sprite;
         selectedToothType = toothSelection.type;
         selectedAttribute = attribute;
+    }
+
+    public ToothAttribute GetToothAttribute()
+    {
+        return selectedAttribute;
     }
 }
