@@ -23,22 +23,24 @@ public class NextObject : MonoBehaviour
             List<RaycastHit2D> hits = Physics2D.LinecastAll(clickPostion, clickPostion).ToList();
             if (hits.Count() != 0)
             {
-                GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().updateCompletedGoblins();
-                if (GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().getCompletedGoblins() >= winGoblins)
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-                }
-                else
-                {
-                    btn = hits[0].collider.gameObject;
-                    AudioManager.Instance.toolPickup();
-                    Debug.Log("Clicked on next");
-                    currentObject = GameObject.Find("GoblinHolder");
-                    HeadManager reInit = (HeadManager)currentObject.GetComponent(typeof(HeadManager));
-                    reInit.Init();
-                    // Destroy(currentObject);
-                    //nextObject = Instantiate(currentObject);
-                    // nextObject.name = "GoblinHolder";
+                if (GameObject.Find("GoblinHolder").GetComponent<HeadManager>().getTeeth() == 0) {
+                    GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().updateCompletedGoblins();
+                    if (GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().getCompletedGoblins() >= winGoblins)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+                    }
+                    else
+                    {
+                        btn = hits[0].collider.gameObject;
+                        //AudioManager.Instance.toolPickup();
+                        Debug.Log("Clicked on next");
+                        currentObject = GameObject.Find("GoblinHolder");
+                        HeadManager reInit = (HeadManager)currentObject.GetComponent(typeof(HeadManager));
+                        reInit.Init();
+                        // Destroy(currentObject);
+                        //nextObject = Instantiate(currentObject);
+                        // nextObject.name = "GoblinHolder";
+                    }
                 }
 
             }
