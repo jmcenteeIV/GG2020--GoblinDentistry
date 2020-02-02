@@ -61,7 +61,13 @@ public class AudioManager : SingletonBase<AudioManager>
                 break;
 
             case "Gold":
-                clipNames = null;
+                clipNames = new List<string>
+                {
+                    "Tooth Pull - Flesh And Bone Tearing -Mike_Koenig-773867444",
+                    "Tooth Pull - Ripping Head Off-Mike_Koenig-599413788",
+                    "Tooth Pull Cartoony - Household Glass Wine Bottle Cork Removing 03",
+                    "Tooth Pull Cartoony - Household Jar Open Pop Open 01"
+                };
                 break;
 
             case "Missing":
