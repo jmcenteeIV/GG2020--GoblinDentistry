@@ -13,8 +13,15 @@ public class NextObject : MonoBehaviour
     GameObject btn;
     public HeadManager reInit;
     int winGoblins = 8;
+    Material origMat;
+    Material newMat;
+    private void Start()
+    {
+        //origMat = gameObject.GetComponent<Material>();
+        //newMat = Instantiate<Material>(origMat);
+        //origMat.color.grayscale(0.0);
 
-    // Start is called before the first frame update
+    }
     private void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(0))
