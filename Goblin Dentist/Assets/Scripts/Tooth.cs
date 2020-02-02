@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tooth : MonoBehaviour
 {
@@ -91,6 +93,20 @@ public class Tooth : MonoBehaviour
                     //capsuleCollider.enabled = false;
                 }
                 AudioManager.Instance.toothRepair();
+            }
+            else
+            {
+                if(GameObject.Find("ScoreKeeper") != null && GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>() != null)
+                {
+                    if (GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().getMisclicks() >= 10)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    }
+                    else
+                    {
+                        GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeperScript>().updateMisclicks();
+                    }
+                }
             }
         }
     }
