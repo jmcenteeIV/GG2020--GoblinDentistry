@@ -7,6 +7,7 @@ public class ScoreKeeperScript : MonoBehaviour
     private int misclicks = 0;
     private int correctClicks = 0;
     private int completedGoblins = 0;
+    private int winGoblins = 8;
 
     void Awake()
     {
