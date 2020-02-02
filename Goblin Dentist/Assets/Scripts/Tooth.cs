@@ -18,7 +18,7 @@ public class Tooth : MonoBehaviour
         Missing
     }
     
-    enum ToothAttribute
+    public enum ToothAttribute
     {
         Healthy,
         Rotten,
@@ -38,6 +38,7 @@ public class Tooth : MonoBehaviour
         (ToothType.Wooden, ToothAttribute.Rotten, "Teeth/Wood/{0}"),
         (ToothType.Gold, ToothAttribute.Rotten, "Teeth/Gold/{0}"),
         (ToothType.Metal, ToothAttribute.Rotten, "Teeth/Unique/{0}/gobtooth_nazgul"),
+        (ToothType.Metal, ToothAttribute.Rotten, "Teeth/Unique/{0}/gobtooth_ringed"),
         (ToothType.Missing, ToothAttribute.Rotten, "nothing"),
         (ToothType.Missing, ToothAttribute.Missing, "nothing")
     };
@@ -126,5 +127,10 @@ public class Tooth : MonoBehaviour
         toothSprite.sprite = spriteList[UnityEngine.Random.Range(0,spriteList.Length)] as Sprite;
         selectedToothType = toothSelection.type;
         selectedAttribute = attribute;
+    }
+
+    public ToothAttribute GetToothAttribute()
+    {
+        return selectedAttribute;
     }
 }
