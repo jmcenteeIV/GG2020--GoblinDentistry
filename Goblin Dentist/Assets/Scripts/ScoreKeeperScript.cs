@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreKeeperScript : MonoBehaviour
 {
     private int misclicks = 0;
+    private int correctClicks = 0;
 
     void Awake()
     {
@@ -19,5 +20,15 @@ public class ScoreKeeperScript : MonoBehaviour
     public int getMisclicks()
     {
         return misclicks;
+    }
+
+    public void updateCorrectClicks()
+    {
+        correctClicks = correctClicks + 1;
+    }
+
+    public int getCorrectClicks()
+    {
+        return correctClicks;
     }
 }
