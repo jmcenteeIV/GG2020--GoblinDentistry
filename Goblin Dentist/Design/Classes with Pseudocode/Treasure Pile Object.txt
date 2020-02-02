@@ -1,0 +1,20 @@
+init
+  goldTeethCount = 0
+  goldCoinCount = 0
+  ringCount = 0
+  fingerWithRingCount = 0
+Update
+  ifHandOverTreasure
+    Collect(Hand)
+      globalGold+hand.getTrasure.getGoldValue(Value)
+      switch
+        goldTooth
+          goldTeethCount+1
+        goldCoin
+          goldCoinCount+1
+        ring
+          ringCount+1
+        fingerWithRing
+          fingerWithRingCount+1
+  else
+    return

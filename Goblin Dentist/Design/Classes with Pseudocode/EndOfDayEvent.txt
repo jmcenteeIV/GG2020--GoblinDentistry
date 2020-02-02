@@ -1,0 +1,8 @@
+Play EndOfDayAnimation
+display end of day screen with report
+if(badscores==3 or out of money)
+  displayEndGameScreen(BadEnding)
+else if(Day+1>8)
+  displayEndGameScreen(GoodEnding)
+else
+  BeginNewDay(day+1)

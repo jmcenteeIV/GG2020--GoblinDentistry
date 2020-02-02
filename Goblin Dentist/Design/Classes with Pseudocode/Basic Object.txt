@@ -1,0 +1,20 @@
+Init
+  Set Variables
+    Primary String
+    Matching Key String
+Update
+  Check if tool over parent
+  if True  
+    ifHand
+      checkUpdate(compareObject(hand.getToothPieceKey(), ToothMatchingKey()))
+    else
+      checkUpdate(compareObject(getMatchingKeyString(), ToothMatchingKey()))
+  else
+    return
+
+checkUpdate(Boolean)
+  if(Boolean)
+    then
+      GlobalFails+1
+  else
+    return

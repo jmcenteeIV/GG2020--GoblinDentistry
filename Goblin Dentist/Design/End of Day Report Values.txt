@@ -1,0 +1,7 @@
+End of Day Report - Given by Dark Lord
+Goblins Served +3 Gold
+Goblins Completed +10 Gold
+Gold Coin Found +1 Gold
+Ring Found +20 Gold
+Finger with Ring Found +40 Gold
+Goblins Not Served -30 Gold

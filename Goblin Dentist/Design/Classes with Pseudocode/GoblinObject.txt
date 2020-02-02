@@ -1,0 +1,11 @@
+init
+  teeth = RandomizeTeeth()
+  finished = false
+update
+  finished = finishGolbin()
+
+finishGoblin()
+  Loop(Tooth : Teeth)
+    if tooth broken
+      return false
+  return true

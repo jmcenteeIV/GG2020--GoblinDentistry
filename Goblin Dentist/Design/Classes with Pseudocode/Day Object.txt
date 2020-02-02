@@ -1,0 +1,13 @@
+init
+   Randomize Goblins(4+day)
+update
+  if(checkEndOfDay(Goblins))
+    EndDayEvent()
+
+
+
+checkEndOfDay(goblins)
+  loop(goblin : goblins)
+    if not finished
+      return false
+  return true

@@ -1,0 +1,3 @@
+init
+  Name - String
+  goldValue - Int

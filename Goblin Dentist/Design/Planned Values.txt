@@ -1,0 +1,5 @@
+Time Per Goblin 30 Seconds-2 minutes (Except on Tutorial which will be infinite)
+Time Per Day 8 minutes, every day will be 10 less seconds (Except on Tutorial which will be infinite)
+Teeth Broken - 3-7 per goblin
+Goblin Queue - 4, every day adds one more
+Day 8 is end of the game
