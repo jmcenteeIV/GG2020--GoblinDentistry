@@ -33,5 +33,16 @@ public class HeadManager : MonoBehaviour
             currentHead = Instantiate(possibleHeads[Random.Range(0, possibleHeads.Length)], this.transform);
 
     }
+    public int getTeeth()
+    {
+        if (currentHead != null)
+        {
+            return currentHead.GetComponent<Head>().GetBadTeethCount();
+        }
+        else
+        {
+            return 999;
+        }
+    }
 
 }
